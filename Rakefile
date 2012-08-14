@@ -97,7 +97,7 @@ end # task :page
 
 desc "Launch preview environment"
 task :preview do
-  system "jekyll --auto --server"
+  system " --auto --server"
 end # task :preview
 
 # Public: Alias - Maintains backwards compatability for theme switching.
@@ -158,7 +158,7 @@ namespace :theme do
   #
   # Examples
   #
-  #   rake theme:install git="https://github.com/jekyllbootstrap/theme-twitter.git"
+  #   rake theme:install git="https://github.com/bootstrap/theme-twitter.git"
   #   rake theme:install name="cool-theme"
   #
   # Returns Success/failure messages.
@@ -177,9 +177,9 @@ namespace :theme do
       => ERROR: 'name' cannot be blank") if name.empty?
     abort("rake aborted! 
       => ERROR: '#{packaged_theme_path}' directory not found.
-      => Installable themes can be added via git. You can find some here: http://github.com/jekyllbootstrap
+      => Installable themes can be added via git. You can find some here: http://github.com/bootstrap
       => To download+install run: `rake theme:install git='[PUBLIC-CLONE-URL]'`
-      => example : rake theme:install git='git@github.com:jekyllbootstrap/theme-the-program.git'
+      => example : rake theme:install git='git@github.com:bootstrap/theme-the-program.git'
     ") unless FileTest.directory?(packaged_theme_path)
     
     manifest = verify_manifest(packaged_theme_path)
