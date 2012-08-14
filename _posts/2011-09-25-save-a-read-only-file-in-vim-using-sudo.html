@@ -1,0 +1,24 @@
+--- 
+layout: post
+title: Save a read-only file in VIM using sudo
+tags: 
+- tips
+- Tips
+- vim
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+  dsq_thread_id: "425423037"
+---
+Have you opened a read-only file and modified it but couldn't save? Not anymore, I found a quick tip which allows VIM users to save the file as 'sudo' even if you didn't use 'sudo' at the time of opening.
+Create a shorthand mapping in VIM as follows:
+
+<code>cmap w!! %!sudo tee &gt; /dev/null %</code>
+
+You can save this to your ~/.vimrc file to persist it.
+
+Now every time you want to override the read-only status and save changes as sudo, just hit 'w!!' and you'll be good.
+
+Love the power of VIM!

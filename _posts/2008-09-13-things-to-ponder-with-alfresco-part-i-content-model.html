@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: "Things to ponder with Alfresco (Part-I: Content Model)"
+tags: 
+- Articles
+- Developer
+- Programming
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "2"
+  dsq_thread_id: "420456898"
+---
+For any content repository, content model definition is similar to the DDL (schema definition) for databases. It is expected in a big application to have evolutionary content model like databases. Updating the table structures or introducing new tables is common in any business application. In content repository, you should also keep in mind that your content model should be open to evolve. Define the content model which will be extensible. Most of the good practices of database design should be applicable here.
+
+Few tips for better content models -
+<ul>
+	<li>Use aspects for specializing types instead of defining content types. There are few advantages of that, aspects can be applied or removed at run-time which gives you much more control over the dynamic nature of types.</li>
+	<li>Aspects also helps in keeping the default set of properties over a content type to be small. Alfresco recommends you to prefer aspects over custom content types.</li>
+	<li>Aspects helps you to logically group properties. This helps your data to be part of multiple groups at the same time. If you have aspects <em>Publishable</em> and <em>Indexable</em>; you can apply or revoke a nature at your will without much hassle.</li>
+	<li>Indexing is very helpful for searchable content. It is useful but use it wisely. The cost of indexing in Alfresco is much higher than cost of index in Databases as this will be full-text search indexes. It will take up more disk space as well as time to index the data. Don't index the content which people are not expect to search! You can define this at the time of content model definition.</li>
+	<li>Versioning is similar to indexing and use this wisely. The content which is versionable is handled separately by Alfresco. This might be affecting performance as your repository size grows. Don't mark content as versionable if you don't plan to maintain revisions for content.</li>
+</ul>
+<p>I will continue this series with other experiences with Alfresco. Later.</p>

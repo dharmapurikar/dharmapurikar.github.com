@@ -1,0 +1,29 @@
+--- 
+layout: post
+title: "Things to Ponder with Alfresco (Part III: WCM - Improvements)"
+tags: 
+- alfresco
+- Articles
+- Developer
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+  dsq_thread_id: "421032231"
+---
+Now days using web content management systems (<a title="Wikipedia: Web Content Management System" href="http://en.wikipedia.org/wiki/Web_content_management_system" target="_self">WCM</a>) is trivial. You should continuously update the website content to maintain a fresh look. It increases returning customers and popularity. Almost every major website uses a <a title="Wikipedia: Content Management Systems" href="http://en.wikipedia.org/wiki/Content_management_system" target="_self">CMS</a> to achieve this. It might be an in-house developed or an off-the-shelf product. In any case, it helps organizations to separate the content authoring team from the application development cycles.  This helps in quicker content updates without being dependent on release schedules. I am going to point out certain things about WCM feature of alfresco. You can also apply the same principles to your WCM if you are using existing one, or planning to develop a new one!
+
+<strong>Content storage format </strong>- Alfresco provides a nice feature called "web-forms". There are two types of forms currently available i.e. WCM forms and ECM forms. Both of them capture the input data and store it as XML. You can also choose to apply content transformation using XSL. It helps to save final output as either HTML, Text or PDF etc. Not to forget, the content is actually captured and saved as XML. In my perception one of the strengths of Alfresco is its content repository. If XML is target format, it is saved in CR as a cm:content property and it defeats the whole purpose. If CR is not aware of the structure of the content, it defeats the purpose of content model definition? It is not very different from storing the content xml as plain string in database. Frankly I don't see any benefit of using CR over database in this method.
+
+To avoid such inefficient use of alfresco, you can take some effort and write a custom form component. Use custom forms (develop forms in your application and then communicate with alfresco using API) to capture user data and store them in content repository in defined content model and schema.
+
+This will help you in -
+<ul>
+	<li>Content repository now understands the structure of your content. This is really important and if you have any doubts, please post that in comments. I might write about it later in my blog.</li>
+	<li>You can apply your custom content transformation logic so that content can be exported in XML / HTML / custom output format. Just generate this once every time you update the content. It improves the efficiency of content management system to deliver target content.</li>
+	<li> You will have a flexibility of own input format, use JSP or rails forms, its your choice!</li>
+</ul>
+<strong>Deployment benefits - </strong> Alfresco has another great strength, Deployment Infrastructure. I think its also one of its weaknesses. Use it wisely to improve your release management. On the release date of web application usually you come across content sanity issues, or format differences. To avoid that, setup proper environments where alfresco can sync content and test it before you push it to live. This might save you a lot of frustration.
+
+Although its a great feature, there is a caveat to that. Generally all the code for web application is stored in CVS systems. Alfresco code (web scripts, web form definitions etc.) is stored in alfresco. Keeping the versions of alfresco code and web application code is nightmare. Develop some automated web script deployment tool and every time you release, wipe out all the previous webscripts and deploy new ones from the CVS. This always makes you keep updated code in the CVS and versioning becomes much robust.

@@ -1,0 +1,38 @@
+--- 
+layout: post
+title: DNS-323, PS3 and UPnP
+tags: 
+- dlink
+- dns-323
+- Personal
+- ps3
+- raid1
+- upnp
+status: publish
+type: post
+published: true
+meta: 
+  _wp_old_slug: ""
+  _edit_last: "1"
+  dsq_thread_id: "420852231"
+---
+I recently bought <a href="http://www.dlink.com/products/?pid=509" target="_blank">Dlink DNS-323</a>. I am using this in RAID 1 mode to copy my data and archive images.
+
+<img class="alignright" src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/DNS-323_right.png" alt="Dlink DNS-323" width="144" height="110" />
+
+I am also using it as media server (<a href="http://en.wikipedia.org/wiki/Universal_Plug_and_Play" target="_blank">UPnP</a>) for streaming video / audio and image content to PS3. The whole setup is very easy and lot of fun! I copied entire catalog of movies / audio and digital image archive and realized the setup is not working properly. I kept getting error while movie streaming on PS3.
+
+<em>"This content cannot be played (800288D8)"</em>
+
+I was very frustrated by the error message. Earlier I thought this is happening due to lack of processing power at DNS-323 end. After careful examination that possibility faded. DNS-323 has Marvell 500 Mhz processor, 64 Mb RAM, 1000 Mbps Ethernet connectivity. There are two Samsung Spinpoint 1 TB each HDD placed inside. I wasn't expecting any bottlenecks for couple of users.
+
+I was about to return the unit and then I came across <a title="DNS-323 Wiki" href="http://wiki.dns323.info/start" target="_blank">this</a> fantastic online resource. I installed <a href="http://wiki.dns323.info/howto:ffp" target="_blank">Mediatomb</a> as UPnP server and disabled in-built application. This allowed me to have seamless access to my video content without any issues! I will recommend you to install this on your DNS-323 so that you can enjoy secure storage and media server. :)
+
+This setup is good for -
+<ul>
+	<li>Archive of all of your files. No more nightmares of hard-drive failure!</li>
+	<li>Cheap and abundant storage.</li>
+	<li>Media serving capabilities at home.</li>
+	<li>Expose firewall-enabled FTP server over internet.</li>
+</ul>
+Don't expect miraculous speeds though. 3-4.5 MBps is average transfer speeds for me. This is enough for me to backup and access stored data. For faster access, I prefer firewire or USB 2.0 drive. Figure out yourself about your requirements. Ciao!

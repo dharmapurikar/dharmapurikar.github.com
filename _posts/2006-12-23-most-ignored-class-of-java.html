@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: Most ignored class of Java!
+tags: 
+- Java
+- Programming
+status: publish
+type: post
+published: true
+meta: 
+  dsq_thread_id: "420851795"
+---
+I am working with java for more than 5 years. From college to professional life, Java deserved an important position as a programming language. Recently I came across a conversation in my team. One of junior developer used ArrayList to store bean objects. To avoid duplicate objects in the list, he used a simple loop for comparing state of the beans.
+
+I suggested him to use HashSet instead of ArrayList (but forgot to tell how HashSet works ;) !) He just changed data structure and came back to me with a complaint of HashSet not working!!! (This is true! :) )
+
+Then I suggested him to visit API doc for HashSet and then he realized that he also need to override equals() and hashCode() methods from Object class. But all this didn't stop there, he was not clear about implementing hashCode method despite of extensive API doc. It made me think about our ignorance of fundamentals.
+
+Then I continued my search and conducted a short survey with my friends. There are total 11 methods in Java 1.4.2 version of <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html">java.lang.Object</a> class. Most of them were not knowing how to implement <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/lang/Object.html#hashCode()">hashCode()</a> method. I am sure if they needed it badly, they will do as they are talented developers.
+
+I found that people know complete Java Collection hierarchy, they know details of Vector class and Concurrency utilities. They know socket programming and design patterns but they miss Object class in major portion.
+
+We tend to find other ways to implement the functionality which is provided by equals() &amp; hashCode() by introducing extra loops or else. Now I don't wonder if I found few more highly ignored things from Java!
+
+Do you know any similar ignored classes / interfaces?

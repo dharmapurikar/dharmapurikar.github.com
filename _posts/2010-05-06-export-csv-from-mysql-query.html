@@ -1,0 +1,23 @@
+--- 
+layout: post
+title: Export CSV from MySQL Query
+tags: 
+- Murmur
+- tips mysql
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+  dsq_thread_id: "420852208"
+---
+As you might be aware that I started a "<a title="Murmurs category on ThoughtBlog" href="http://thoughtworker.in/category/murmur/" target="_self">Murmur</a>" category on my blog. I discover or learn these tips on day-to-day basis and just forget them. Sometimes those takes hours to come with one or often it boils down to just a google search. In any case, you might want to refer to these tips in future as well. So I decided to keep a log of them publicly so that it can help others too.
+
+Many times I need to get dump of data which is output of a sql query. MySQL makes it very easy to output the query result as csv file from command line. Following command should create a names.csv file in $MYSQL_INSTALLATION/data/$DB_NAME/ directory. This command comes very handy when you're working on remote shell where you don't have any GUI tools.
+<pre lang="sql">SELECT first_name, last_name INTO OUTFILE 'names.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+ESCAPED BY '\\'
+LINES TERMINATED BY '\n'
+from employee;</pre>
+Very useful.

@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: How to display local time to users in browser?
+tags: 
+- browser dates iso8601 javascript
+- Developer
+- Programming
+status: publish
+type: post
+published: true
+meta: 
+  dsq_thread_id: "444234084"
+  _edit_last: "1"
+---
+In 7 years web programming career, I never met this problem before. In a recent project we needed to show browsers local time on the page. Few folks have solutions to do this server side but none of them work reliably. Why?
+<ul>
+	<li>Browsers don't send any timezone information</li>
+	<li>You can send offset in headers / parameters but its only reliable for dynamic requests</li>
+</ul>
+After trying a failing multiple times, I resorted to a browser-based JavaScript solution. This works great!
+<ol>
+	<li>Convert all the server side timestamps to UTC. This makes server side code life way easier!</li>
+	<li>Send the dates to browser in iso8601 format which JavaScript can parse easily.</li>
+	<li>I used very good jQuery library (<a href="http://code.google.com/p/jquery-localtime/">Localtime</a>)  to convert <a href="http://en.wikipedia.org/wiki/ISO_8601">iso8601</a> formatted dates to format required by application.</li>
+</ol>
+You can also tag your date spans with a special class. This way you can convert all timestamps to different formats unobtrusively. Very simple and elegant solution.

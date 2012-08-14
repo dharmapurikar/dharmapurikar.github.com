@@ -1,0 +1,44 @@
+--- 
+layout: post
+title: Guarding in JavaScript
+tags: 
+- Developer
+- Programming
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "2"
+  dsq_thread_id: "420852070"
+---
+After looking at JavaScript programming sessions by <a href="http://www.crockford.com/">Douglas Crockford</a> (<a href="http://yuiblog.com/blog/2007/01/24/video-crockford-tjpl/">here</a>), I couldn't stop but admire JavaScript. There are many many impressive things in JavaScript but one of the eye-catchy thing was guarding operator in JavaScript.
+
+The && operator in JavaScript can be acted in two ways. The normal 'and' operator which is used in determining the conditional logic results. The other lesser known feature of JavaScript is the guard operator. In following code -
+
+<pre lang="javascript">
+/* The if is checking if specs is not undefined, false, null,
+"" (empty string) or 0 (numeric zero) as these all values
+are falsy conditions in JavaScript */
+
+if(specs)
+     width = specs.width;
+
+// To avoid the if condition you can simply do like -
+
+width = specs && specs.width;
+
+/* This makes sure that specs is not falsy and they
+returns the second operand which is convenient
+way to write null check */
+
+</pre>
+
+The same is with || operator too. If the first operand is falsy then it just returns the second operand instead. Consider following code:
+
+<pre lang="javascript">
+name = specs.name || "Name not set";
+/* Use the specs.name, but if name doesn't have a value, use default
+value instead. */
+</pre>
+
+Very simple and very efficient!

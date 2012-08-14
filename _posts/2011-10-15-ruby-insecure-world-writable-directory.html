@@ -1,0 +1,21 @@
+--- 
+layout: post
+title: "Ruby: Insecure World Writable Directory"
+tags: 
+- Developer
+- ruby tip console warning
+- Tips
+status: publish
+type: post
+published: true
+meta: 
+  _edit_last: "1"
+  dsq_thread_id: "444219140"
+---
+I keep getting following warning lately on my mac.
+<pre>ruby warning: Insecure world writable dir /usr/local/bin, mode 040777</pre>
+Little research and I found, Ruby warns you about any world writeable directory in your PATH. Not only writeable directories but parents as well.
+
+Fix is super quick.
+<pre>chmod o-w /usr/local/bin</pre>
+You can replace /usr/local/bin with any directory which ruby complains about. This fixes the issue.
