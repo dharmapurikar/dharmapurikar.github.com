@@ -851,3 +851,11 @@ pre {
     margin-right: 360px;
   }
 }
+
+.circle {
+	background-color: gray;
+  border-radius: 8px 8px 8px 8px;
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+}
