@@ -10,7 +10,7 @@ title: Home
   {{ post.content }}
   <p> Tags - |
   {% for tag in post.tags %}
-    <a href="#">{{ tag | capitalize }}</a> |
+    <a href="#">{{ tag }}</a> |
   {% endfor %}
   </p>
   <hr/>
