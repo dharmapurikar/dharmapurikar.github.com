@@ -279,7 +279,7 @@ pre {
 .unit-article .entry-content:first-child h4,
 .unit-article .entry-content:first-child h5,
 .unit-article .entry-content:first-child h6 {
-  margin-top: 0;
+  margin-top: 5px;
 }
 .unit-article a:link {
   border-bottom: 1px dotted #99cc99;
@@ -299,7 +299,10 @@ pre {
   margin-right: 0;
 }
 .unit-article ul, .unit-article ol, .unit-article dl {
-  padding-left: 0;
+  padding-left: 40px;
+}
+.meta ul, .meta ol, .meta dl {
+	padding-left: 0;
 }
 .unit-article ul {
   list-style: square;
@@ -343,7 +346,8 @@ pre {
   margin-left: 0;
   margin-right: 0;
 }
-.unit-article p code, .unit-article li code {
+
+code {
   margin: 0 2px;
   padding: 2px 5px;
   white-space: nowrap;
@@ -356,6 +360,7 @@ pre {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+
 .unit-article img {
   display: block;
   margin-left: auto;
