@@ -17,7 +17,9 @@ meta:
   _edit_last: "1"
   dsq_thread_id: "453358726"
 ---
+
 I am a Linux user by large. Lately I migrated to Mac as it worked better for me. (...and they look beautiful!) Although, I found from <a href="http://twitter.com/#!/hyfather">@hyfather</a> that there is significant difference between Mac based utilities vs Linux-based. This difference exists as Linux has GNU coreutils and Mac has BSD based.
+
 <br clear="all"/>
 <div style="float: left">
 <img title="BSD" src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/Bsd-big.png" alt="" width="117" height="123"/>
@@ -27,13 +29,15 @@ I am a Linux user by large. Lately I migrated to Mac as it worked better for me.
   <img title="GNU" src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/120px-Gnu.jpg" alt="" width="120" height="120"/>
 </div>
 <br clear="all"/>
-
+<p>
 Many switches are different, output is different and it is very frustrating to experienced users.
-
-I ran into <code>netstat</code> command recently. I needed to find out pid of <code>memcached</code> server on my mac. Spend few mins but no luck. Mac based <code>netstat</code> command won't understand <code>-p</code> switch. Aaargh! I had to use <code>lsof</code> to get my job done.
-
+</p>
+<p>
+  I ran into <code>netstat</code> command recently. I needed to find out pid of <code>memcached</code> server on my mac. Spend few mins but no luck. Mac based <code>netstat</code> command won't understand <code>-p</code> switch. Aaargh! I had to use <code>lsof</code> to get my job done.</p>
+</p>
 Here is how I did it -
-
+</p>
 <pre>sudo lsof -i -P|grep memcache</pre>
-
+<p>
 Worked great!
+</p>
