@@ -34,7 +34,8 @@ Many switches are different, output is different and it is very frustrating to e
 </p>
 <p>
   I ran into <code>netstat</code> command recently. I needed to find out pid of <code>memcached</code> server on my mac. Spend few mins but no luck. Mac based <code>netstat</code> command won't understand <code>-p</code> switch. Aaargh! I had to use <code>lsof</code> to get my job done.</p>
-</p>
+
+<p>
 Here is how I did it -
 </p>
 <pre>sudo lsof -i -P|grep memcache</pre>
