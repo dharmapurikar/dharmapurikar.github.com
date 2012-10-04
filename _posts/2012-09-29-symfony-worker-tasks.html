@@ -43,18 +43,8 @@ tags:
 	After some time, I saw an error message in log file -
 	<blockquote>MySQL server has gone away</blockquote>
 	So this means, there was some connection idle for more than <code>wait_time</code> configured in MySQL. In my case it was set to 28800 (8 hours). This was long enough duration to hit at least one query. It didn't happen over the night and the task stopped sending emails. Snippet from my task code -
-	<pre>
-protected function execute($arguments = array(), $options = array())
 
-$databaseManager = new sfDatabaseManager($this-&gt;configuration);
-
-$connection = $databaseManager-&gt;getDatabase($options[&apos;connection&apos;])-&gt;getConnection();
-
-// more code with database goes here
-
-}
-	</pre>
-</p>
+<script src="https://gist.github.com/3831941.js?file=database-task.php"></script>
 
 <p>
 	When you instantiate <code>sfDatabaseManager</code> in symfony task, it will create a connection using provided configuration. This connection will be killed if it idles for <code>wait_time</code>. If you kept issuing <em>ping</em> queries, then you don't have that issue. Upon using the connection to query database <code>wait_time</code> will keep resetting to 0 and you'll reuse the connection again and again.
@@ -66,11 +56,8 @@ $connection = $databaseManager-&gt;getDatabase($options[&apos;connection&apos;])
 
 <p>
 	To tackle this connection getting killed, I just started creating <code>sfDatabaseManager</code> every time I received a message. Just like the symfony web request procedure.
-<pre>
-$databaseManager = new sfDatabaseManager($this-&gt;configuration);
-// Use database to do operations
-$databaseMangare->shutdown();
-</pre>
+
+<script src="https://gist.github.com/3831941.js?file=new-database-manager.php"></script>
 
 <code>$databaseManager->shutdown()</code> is actually supposed to close all the active connections and then shut itself down. Sounds reasonable and worked for me until I hit second issue.</p>
 
@@ -85,10 +72,8 @@ I was surprised. Database manager is getting shutdown, I debugged code and I saw
 <p>What I found was very interesting.</p>
 
 <p>Symfony task used <code>sfDatabaseManager</code> to manage database activity. I used doctrine so <code>sfDatabaseManager</code> internally used <code>Doctrine_Manager</code>. Doctrine uses PDO to finally connect to the database server. I found that right way to manage a PDO connection is simple -
-<pre>
-$dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
-$dbh = null;
-</pre>
+
+<script src="https://gist.github.com/3831941.js?file=pdo.php"></script>
 
 Setting a PDO reference to <code>null</code> will close the connection. Simple enough.
 </p>
