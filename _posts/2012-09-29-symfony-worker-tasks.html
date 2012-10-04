@@ -43,17 +43,19 @@ tags:
 	After some time, I saw an error message in log file -
 	<blockquote>MySQL server has gone away</blockquote>
 	So this means, there was some connection idle for more than <code>wait_time</code> configured in MySQL. In my case it was set to 28800 (8 hours). This was long enough duration to hit at least one query. It didn't happen over the night and the task stopped sending emails. Snippet from my task code -
-	<pre>
+
+{% highlight php %}
 protected function execute($arguments = array(), $options = array())
 
-$databaseManager = new sfDatabaseManager($this-&gt;configuration);
+$databaseManager = new sfDatabaseManager($this->configuration);
 
-$connection = $databaseManager-&gt;getDatabase($options[&apos;connection&apos;])-&gt;getConnection();
+$connection = $databaseManager->getDatabase($options['connection'])->getConnection();
 
 // more code with database goes here
 
 }
-	</pre>
+{% endhighlight %}
+
 </p>
 
 <p>
