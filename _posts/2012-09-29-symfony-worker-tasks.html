@@ -45,7 +45,7 @@ tags:
 	So this means, there was some connection idle for more than <code>wait_time</code> configured in MySQL. In my case it was set to 28800 (8 hours). This was long enough duration to hit at least one query. It didn't happen over the night and the task stopped sending emails. Snippet from my task code -
 
 <script src="https://gist.github.com/3831941.js?file=database-task.php"></script>
-
+</p>
 <p>
 	When you instantiate <code>sfDatabaseManager</code> in symfony task, it will create a connection using provided configuration. This connection will be killed if it idles for <code>wait_time</code>. If you kept issuing <em>ping</em> queries, then you don't have that issue. Upon using the connection to query database <code>wait_time</code> will keep resetting to 0 and you'll reuse the connection again and again.
 </p>
