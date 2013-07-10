@@ -1,0 +1,59 @@
+Cisco VPN client for Linux installation doesn't happen out-of-the-box. There is plugin of VPNC which gets integrated with NetworkManager of Ubuntu but I didn't focus on that. Maybe somebody would like to guide the steps for it. I investigated a little and found bunch of articles / blog post about VPN issue. Some of the articles needs an update. Following steps will get VPN client working on Ubuntu Intrepid and use certificate based authentication to connect.
+
+First get the distribution of VPNClient for Linux. This distribution is valid for 32-bit as well 64-bit installations.
+<pre>wget http://tuxx-home.at/vpn/Linux/vpnclient-linux-x86_64-4.8.01.0640-k9.tar.gz
+tar -xvzf  vpnclient-linux-x86_64-4.8.01.0640-k9.tar.gz
+cd vpnclient
+sudo ./vpn_install</pre>
+This command should result in similar output below:
+<pre>Cisco Systems VPN Client Version 4.8.01 (0640) Linux Installer
+Copyright (C) 1998-2006 Cisco Systems, Inc. All Rights Reserved.
+
+By installing this product you agree that you have read the
+license.txt file (The VPN Client license) and will comply with
+its terms.
+
+Directory where binaries will be installed [/usr/local/bin]
+
+Automatically start the VPN service at boot time [yes]
+
+In order to build the VPN kernel module, you must have the
+kernel headers for the version of the kernel you are running.
+
+Directory containing linux kernel source code [/lib/modules/2.6.27-7-generic/build]
+
+* Binaries will be installed in "/usr/local/bin".
+* Modules will be installed in "/lib/modules/2.6.27-7-generic/CiscoVPN".
+* The VPN service will be started AUTOMATICALLY at boot time.
+* Kernel source from "/lib/modules/2.6.27-7-generic/build" will be used to build
+the module.
+
+Is the above correct [y]
+
+Making module
+make -C /lib/modules/2.6.27-7-generic/build SUBDIRS=/home/sachin/vpnsandbox/vpnclient
+modules
+make[1]: Entering directory `/usr/src/linux-headers-2.6.27-7-generic'
+CC [M]  /home/sachin/vpnclient/linuxcniapi.o
+In file included from /home/sachin/vpnclient/Cniapi.h:15,
+from /home/sachin/vpnclient/linuxcniapi.c:31:
+/home/sachin/vpnclient/GenDefs.h:113: error: conflicting types for ‘uintptr_t’
+include/linux/types.h:40: error: previous declaration of ‘uintptr_t’ was here
+make[2]: *** [/home/sachin/vpnclient/linuxcniapi.o] Error 1
+make[1]: *** [_module_/home/sachin/vpnclient] Error 2
+make[1]: Leaving directory `/usr/src/linux-headers-2.6.27-7-generic'
+make: *** [default] Error 2
+Failed to make module "cisco_ipsec.ko".</pre>
+To get around this error you need to patch couple of files in the existing source. Download the patch and apply it.
+<pre>wget http://projects.tuxx-home.at/ciscovpn/patches/vpnclient-linux-2.6.24-final.diff
+patch &lt; ./vpnclient-linux-2.6.24-final.diff</pre>
+After successful patch of the files you can go ahead to the install procedure again -
+<pre>sudo ./vpn_install</pre>
+You can see all files getting compiled successfully. If it is successful you will see a message like below -
+<pre>* You must run "/etc/init.d/vpnclient_init start" before using the client.
+* This script will be run AUTOMATICALLY every time you reboot your computer.</pre>
+Now you can copy your vpn configuration files (*.pcf) in /etc/opt/cisco-vpnclient/Profiles folder and you can start connecting the vpn network using command -
+<pre>vpnclient connect</pre>
+If you want to use certificate based authentication for the connection then following do following operation.
+<pre>sudo cisco_cert_mgr -U -op import</pre>
+This will ask you for the certificate file location and password for the file if required. Enter the passwords for importing certificates if required and try with connection.

@@ -1,0 +1,37 @@
+I have worked with many developers and many times, I ran into following conversation. Whenever we are in the middle of development and I ask for checking in the code, one of following reply is heard -
+<ul>
+	<li>Umm, lets do check-in towards end-of-the day. We are not yet done with the code.</li>
+	<li>Let me clean up these things and make them perfect.</li>
+	<li>I don't want to check-in as I have some ongoing changes and I can't checkin partial files.</li>
+	<li>Lets checkin tomorrow when we complete major functionality.</li>
+</ul>
+I am sure you must have heard similar conversation (or had it). Can you give a moment and think about why do are we afraid of checking-in? I have been constantly thinking about this issue and there are many reasons which makes sense on this issue. Few of them are -
+
+<strong>Fear of bad code</strong> - Developers are afraid of peers criticizing their code. Its GOOD! Believe me, you're never going to write perfect code without receiving feedback about it. Sooner you receive the feedback, better you perform in short time. This is the reason, people don't make their changes public until they are convinced that they can't do any better. It is clearly a false fear.
+One of the way to improve and influence your team is to make your work public as it is in progress. This way, you make team aware of your approach. If there is any conflict in approach or disconnect in understanding, it becomes visible sooner and you can resolve it better.
+
+<strong>Not sure about impact on other parts of the system</strong> - Yes! This is very valid reason. You're in middle of a feature and you're not sure how it will impact rest of the system if you check-in early. Half baked features can take the whole system down. To get over this fear, unit testing your code, running a full build before check-in and having continuous integration makes sure your changes are fail-safe. Make sure that you are providing a working build to the team by writing solid unit tests and more comprehensive integration tests.
+
+<strong>Working on multiple parallel streams</strong> - It is often a bad practice to work on multiple parallel streams of work. Even worse when you don't commit any of those changes in VCS.
+If you're working with DVCS like Git, it is very easy to branch and commit code. If you're working on central VCS like subversion, then it is little tricky to keep your parallel working streams with minimal effort. There are few simple things you can do to make your life little easy -
+
+Use DVCS. This will prove immense value in long run, if you use it properly. There is a learning curve associated with it, but it is definitely worth it.
+If you are using SVN, create a branch if it is a big change. If it is small change, evaluate if you can checkin without breaking application. Taking patch is another option too. Use unit testing safety net on your side and make sure you progress smoothly.
+
+In any situation, its not helpful when you're working on parallel streams of work and those changes co-exist. I have often observed people checking in partial or missing content. This happens when they are confused and trying to understand what all files are required to make one of streams live.
+
+<strong>Why frequent check in is important?</strong>
+<ul>
+	<li>Getting feedback from your application and team.</li>
+	<li>Never lose any of your changes and hard work. Machines do crash and when they do, its bad!</li>
+	<li>Avoid stepping on each others toes, particularly when team is distributed and code churn is faster.</li>
+	<li>Making whole team aware of your approach and remove silo operations. This helps bringing everybody on the same page and triggers conversations whenever required.</li>
+	<li>You can't explain in 30 minutes of speech what code explains in 10 minutes. It eliminates confusion.</li>
+	<li>Discipline of frequent checkin allows you to make sure, changes are not causing any conflicts.</li>
+	<li>Smaller changes, encourages you to refactor and improve code quality.</li>
+</ul>
+If you want to read more -
+
+Golden principle of development: <a href="http://www.codinghorror.com/blog/2008/08/check-in-early-check-in-often.html" target="_blank">Check-in-early, check-in-often</a>.
+DVCS introduction from the master: <a href="http://www.youtube.com/watch?v=4XpnKHJAok8" target="_blank">Google Video on Git</a>.
+Continuous integration: <a href="http://en.wikipedia.org/wiki/Continuous_integration" target="_blank">Wikipedia entry</a>.

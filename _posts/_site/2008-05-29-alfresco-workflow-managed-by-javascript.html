@@ -1,0 +1,92 @@
+If you are a regular reader of this blog, you might have figured out that I am currently working on a project involving <a title="Alfresco Content Management System" href="http://www.alfresco.com" target="_blank">alfresco</a> at the center and it's a content management system. Earlier I have worked with Content repository (<a title="Apache Jackrabbit Content repository" href="http://jackrabbit.apache.org/" target="_blank">Apache Jackrabbit</a>) and that was a good experience. Alfresco is next step of a content repository which extends it into a full blown content management system and much more.  I was working on a problem where we defined a custom (<a title="Ad Link: Novell Advanced Workflow" href="http://www.novell.com/products/teaming/iceworkflow.html" target="_blank">Advanced workflow</a>) to be precise in Alfresco lingo. This workflow was needed to be monitored, managed and accessed only via a webscript as we have used webscripts to do almost everything in our project. I was very pleased to see <a title="Alfresco JavaScript workflow API" href="http://wiki.alfresco.com/wiki/Workflow_JavaScript_API" target="_blank">this</a>, but that is only available in 2.9 labs release (as of now). We are using alfresco 2.2.0 version for our development and that is production stable version, so I have very little choice but go with production version. Alfresco has very limited JavaScript API support for workflow manipulation and that was difficult job for manage. There was no other option than writing custom JavaScript API which allows to manage workflow in Alfresco. We did that and it was very powerful and easy! :)  I wanted following features for JavaScript API -
+<ul>
+	<li>Easy to extend</li>
+	<li>Can handle any workflows</li>
+	<li>Provides easy ways to retrieve tasks, definitions, paths etc.</li>
+	<li>Provides as much functionality possible which is available in Alfresco Workflow Console.</li>
+</ul>
+Alfresco workflow console is command line interaction component which allows you to manipulate, get information about workflows using simple commands and I wanted to do all that using JavaScript. I started exploring the source code and found a class 'org.alfresco.service.cmr.workflow.WorkflowService'. This class has generic API which allows you to do all the operations possible through workflow console. This bean is used for workflow console operations. So all I needed was expose this bean in JavaScript as root object and start using it. That simple!  I wrote a simple java class to expose the bean as follows:
+<pre lang="java">package com.xxxx.yyyy.workflow;
+
+import java.util.List;
+
+import org.alfresco.repo.processor.BaseProcessorExtension;
+import org.alfresco.service.ServiceRegistry;
+import org.alfresco.service.cmr.repository.NodeRef;
+import org.alfresco.service.cmr.workflow.WorkflowService;
+
+public class WorkflowManager extends BaseProcessorExtension {
+	private ServiceRegistry services;
+
+	public void setServiceRegistry(ServiceRegistry serviceRegistry) {
+		this.services = serviceRegistry;
+	}
+
+	public WorkflowService getWorkflowService(){
+		return services.getWorkflowService();
+	}
+}</pre>
+The method getWorkflowService() exposes the workflow service to the JavaScript calls. To expose the Workflow Manager as root object in JavaScript create <em>WEB-INF/classes/alfresco/extension/custom-script-context.xml</em> and you will be good! (If you don't know how to do that, read <a title="Defining JavaScript API" href="http://wiki.alfresco.com/wiki/JavaScript_API#Adding_Custom_Script_APIs" target="_blank">this</a>)  Now, you can get the handle of workflow service in JavaScript code. Yet, we need to write a small component which will allow us to retrieve the active workflows, tasks etc. To do so, I wrote a small JavaScript object which provides those functionality to the user.
+<pre lang="javascript">var workflowService = workflow.getWorkflowService();
+
+var W = {
+	transitions: function(noderef){
+		var task = W._currentTask(noderef);
+		var trans = [];
+		try{
+		var tasks = task &amp;&amp; task.path.node.transitions;
+		for(var index=0; index &lt; tasks.length; index++){
+			trans[trans.length] = tasks[index].id;
+		}
+		}catch(error){
+			// Ignore error
+		}
+		return trans;
+	},
+
+	move: function(noderef, command){
+		workflowService.endTask(W._currentTask(noderef).id
+                , command);
+	},
+
+	_workflowPath: function(noderef){
+		var workFlows = workflow.getWorkflows
+                      ("workspace://SpacesStore/" + noderef, true);
+		if(workFlows.size()&gt;0){
+			return workFlows.get(0).id + "-@";
+		}
+		return "";
+	},
+
+	_currentTask: function(noderef){
+		var curTask;
+		var tasks;
+		try{
+		tasks = workflowService.getTasksForWorkflowPath
+                           (W._workflowPath(noderef));
+		if(tasks.size() &gt; 0)
+		      curTask = tasks.get(0);
+		} catch(Error){
+			// Ignore error
+		}
+		return curTask;
+	}
+}
+
+function initWorkflow(noderef)
+{
+	var wflow = actions.create("start-workflow");
+	wflow.parameters.workflowName
+             = "jbpm$xxxxyyyy:abc"; // your workflow name
+	wflow.parameters["bpm:assignee"]
+             = person.properties.userName;
+	wflow.parameters["bpm:workflowDescription"]
+             = "Put your description";
+	wflow.execute(noderef_for_which_workflow_will_associate);
+}</pre>
+Thats it! The initiate workflow method is used to apply a workflow to a node. Once that is done, the <em>W</em> object can be used to do operations like retrieving the active tasks, ending the workflow and making the workflow transition.  Hope that helps.  If you need more workflow related information and reading material you can visit following places:
+<ul>
+	<li>JBPM jPDL Documentation (<a title="Open in new window" href="http://docs.jboss.com/jbpm/v3.2/userguide/html/" target="_blank">here</a>)</li>
+	<li>Alfresco workflow wiki (<a title="Open in new window" href="http://wiki.alfresco.com/wiki/Workflow" target="_blank">here</a>)</li>
+	<li>ECMArchitect Advance Workflow Guide (<a title="Open in new window" href="http://ecmarchitect.com/archives/2007/11/19/785" target="_blank">here</a>)</li>
+</ul>
