@@ -15,12 +15,11 @@ meta:
   dsq_thread_id: "420850902"
 ---
 I installed <a href="http://www.ubuntu.com/" target="_blank" title="Ubuntu linux home">ubuntu 6.06 LTS</a> on my machine. I was on the ride of happiness :) I liked everything, right from the starting sound to shutting down screen! Some notable features are -
-<ul>
-	<li>Package manager - This really helps. You can choose which packages / libraries to download / install and just download them. That really gives you lot of choice to work with.</li>
-	<li>Device support - I experienced the seamless operation of many devices. My thumb-drive and digital camera were instantly installed and ready to use. No more website searching for drivers.</li>
-	<li>DVD, Mp3 &amp; other playback - Though I was required to download libraries to run non-free media formats, but that's OK. I could finally listen to my songs while I work ;)</li>
-</ul>
-<!--more-->
+
+* Package manager - This really helps. You can choose which packages / libraries to download / install and just download them. That really gives you lot of choice to work with.
+* Device support - I experienced the seamless operation of many devices. My thumb-drive and digital camera were instantly installed and ready to use. No more website searching for drivers.
+* DVD, Mp3 &amp; other playback - Though I was required to download libraries to run non-free media formats, but that's OK. I could finally listen to my songs while I work ;)
+
 This list could have many more points which you can easily see from other ubuntu related blogs. Enough praising!
 
 There are still areas where Ubuntu needs to work-out. I felt a major reason was re-installing ubuntu. All the packages and libraries which were downloaded from internet are totally lost! :o You need to start-over again for setting up those applications! :( On the top of it, to increase our difficulties the names of libraries and applications are very difficult to remember or cryptic. To play DVDs you need to use "xine" and for playing songs "Rhythembox". Why we don't use simple names like MusicBox or MoviePlayer? Library dependencies, names and other problems might be solvable by geeks, but normal users will switch back to Windows than wasting time on googleling for How-To's!
