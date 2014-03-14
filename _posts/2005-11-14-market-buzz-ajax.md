@@ -1,0 +1,22 @@
+--- 
+layout: post
+title: Market Buzz - AJAX
+tags: 
+- ajax
+categories:
+- Developer
+status: publish
+type: post
+published: true
+meta: 
+  dsq_thread_id: "420850859"
+---
+In a week, I at least see around hundreds are blogs being published on Ajax. On "Technorati" in top searches also Ajax is present. When people first saw a freaky interface on google maps and google suggest, it made a click. How does it works? There came the AJAX into picture. AJAX is giving now ability to send/receive XMLHttpRequest and XMLHttpResponse from the client/server to and fro.
+
+But any facility comes with many challenges in its implementation. When I get ability to fire any arbitrary number of requests from web page in background there are few issues of which we need to take care.
+
+* Connections over! - When a client application can make any number of requests the server traffic is going to increase. All application servers should scale to accommodate the increasing request demands. Or else the whole fun of the application goes with a Blah!
+* Komplicated! - While AJAX gives me some chunky wunky features. I also make my user interface much complicated. Developer need to take care of each small and big error response which arrives from the server. Any mistake in handling responses properly makes a very poor application.
+* Steal my information - Previously, if a innocent user visits a website with spyware or some malware. The application needed the user permission to install its ActiveX control or something like that at client side. But now the capturing and sending of the information became whole lotta easier. In the background any application can send arbitrary information to the server in XML format. I am sure, we can stop this by installing proper firewalls and disabling some features. But one more possibility of threat couldn't be denied.
+
+Still, I love AJAX. Compared to all the drawbacks, it gives me excellent freedom to manipulate the user input. Looking for more and more work in this area to improve its functionality. There are few frameworks available which works on AJAX like Sarissa but better frameworks are needed. Those who want to develop a good application should have look at Echo2 also. This is a good platform distributed on GPL license. Even the Echo2 Application studio is also available to author echo2 based application in eclipse.
