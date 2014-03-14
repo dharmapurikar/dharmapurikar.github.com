@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "\xE2\x80\xA6 going to be a ThoughtWorker!"
+title: "going to be a ThoughtWorker!"
 tags: 
 - thoughtworks
 categories:
