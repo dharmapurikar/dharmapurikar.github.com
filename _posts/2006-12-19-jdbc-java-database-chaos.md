@@ -26,4 +26,4 @@ So far there seems no problem, the real problem starts when we try to make our a
 This becomes very difficult if we are supporting large number of databases. So I was wondering, instead of hundreds of database specific error codes why JDBC doesn't cover exception hierarchy. Then database vendors have liberty to use their error codes while making implementation of JDBC driver generic. Since complete JDBC exception hierarchy will be arranged in similar to IOException, if any user doesn’t want to catch granular exceptions they are free to use generic SQLExceptions.
 
 This will surely help me to chop my code size by 1.5 K of lines :)
-<p class="MsoNormal">&nbsp;</p>
+

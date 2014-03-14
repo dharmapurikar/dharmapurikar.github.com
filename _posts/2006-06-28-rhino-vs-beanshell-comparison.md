@@ -25,51 +25,26 @@ To get a quick start, I chose Rhino and BeanShell. JudoScript sounded like lots 
 In our case, developers will write some small routines to process sql resultsets. Typically the operations will be getting values in different columns or creation of sets etc. So my job is to provide a framework which takes sql queries dynamically and pass on the resultset to script. Script will process resultset and return the Lists or HashMap to framework again so that further processing can be done. So from my perspective resultset processing abilities was a winning point. For those who are more interested in computational performance analysis, I hope they will love to see this <a href="http://www.pankaj-k.net/spubs/articles/beanshell_rhino_and_java_perf_comparison/index.html">page</a>.
 
 Coming back to data processing capabilities, I set a simple test case with following steps:
-<ul>
-	<li>Get Resultset</li>
-	<li>Note start time</li>
-	<li>Process Resultset using Java / Rhino / Beanshell code.</li>
-	<li>Note end time</li>
-</ul>
+
+* Get Resultset
+* Note start time
+* Process Resultset using Java / Rhino / Beanshell code.
+* Note end time
+
 I kept number of records as a variable in all of the executions. Thus I wanted to see the effect of increasing recordset size on performance. I started with 50 records and final reading was taken at 50000 records. Result of tests is as follows -
 
 <a class="imagelink" title="Script Performance Analysis" href="http://dharmapurikar.files.wordpress.com/2006/06/comparison.PNG"><img src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/comparison.png" alt="Script Performance Analysis" width="416" height="286" /></a>
 
 To help you understand clear the tabular representation of above data is -
-<table border="1" cellspacing="0" cellpadding="0">
-<tbody>
-<tr align="center">
-<td>Num of Records</td>
-<td>Java</td>
-<td>Rhino</td>
-<td>BeanShell</td>
-</tr>
-<tr>
-<td>50</td>
-<td>31</td>
-<td>375</td>
-<td>250</td>
-</tr>
-<tr>
-<td>500</td>
-<td>110</td>
-<td>391</td>
-<td>453</td>
-</tr>
-<tr>
-<td>5000</td>
-<td>359</td>
-<td>844</td>
-<td>1391</td>
-</tr>
-<tr>
-<td>50000</td>
-<td>2375</td>
-<td>5515</td>
-<td>11406</td>
-</tr>
-</tbody>
-</table>
+
+| Num of Records | Java | Rhino | BeanShell |
+|----------------|------|-------|-----------|
+| 50             | 31   | 375   | 250       |
+| 500            | 110  | 391   | 453       |
+| 5000           | 359  | 844   | 1391      |
+| 50000          | 2375 | 5515  | 11406     |
+
+
 On your machine the figures may vary a little bit but the ratio should be roughly same. BeanShell's performance is dropped suddenly with the larger size of record set. On the other hand Rhino performs consistently and balances better with the size record set. For Java the ratio for 50:50000 records is 1:37 but for Rhino its 1:15. For Beanshell same ratio stands as 1:45! This clearly shows that there is consistency in performance of Rhino compared to BeanShell.
 
 Although Rhino is winner from the performance perspective, I need to admit Beanshell is homely for Java developers. The communication between beanshell and java is almost seamless. For Rhino you need to understand Scope, context and little more Rhino specific things but for BeanShell there is no complexity. So from simplicity perspective I vote for BeanShell.
