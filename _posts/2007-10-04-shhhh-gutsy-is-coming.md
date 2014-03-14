@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Shhhh\xE2\x80\xA6 Gutsy is coming!"
+title: "Shhhh... Gutsy is coming!"
 tags: 
 - kubuntu
 - ubuntu

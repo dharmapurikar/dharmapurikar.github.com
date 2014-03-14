@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Ubuntu: Will Skype \xE2\x80\x98jingle\xE2\x80\x99?"
+title: "Ubuntu: Will Skype jingle?"
 tags: 
 - skype
 - linux
