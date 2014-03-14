@@ -13,6 +13,6 @@ published: true
 meta: 
   dsq_thread_id: "420851828"
 ---
-Updated: <em>Sorry but following video is removed from YouTube!</em> :(
+Updated: _Sorry but following video is removed from YouTube!_ :(
 
-[youtube=http://www.youtube.com/watch?v=sjnxFyJT2I4]
+http://www.youtube.com/watch?v=sjnxFyJT2I4

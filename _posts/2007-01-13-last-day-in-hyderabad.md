@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Last day in Hyderabad\xE2\x80\xA6"
+title: "Last day in Hyderabad"
 categories: 
 - Personal
 tags:

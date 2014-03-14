@@ -19,8 +19,9 @@ Yesterday, on first day of vacation, I installed <a href="http://http://www.kubu
 Kubuntu was amazing in these regards, I plugged my WD passport drive and immediately it shown me the dialog (like windows :) ) to open or view pictures. I liked the way they picked up good features of windows. When I plugged in my network cable, it automatically configured itself to proper device and I had to do nothing except waiting for couple of seconds! So my first impressions of Kubuntu are really good!
 
 I faced only one issue with Kubuntu, getting 1440x990 resolution my Dell Latitude D620. Laptop configuration is as follows:
+
 * Core 2 Duo T7200 CPU (2 64-bit 2.00 GHz processors)
-* WXGA+ screen, 1440*900
+* WXGA+ screen, 1440x900
 * NVidia Quadro 110M Turbo Cache
 * 1GB RAM
 * Integrated bluetooth, usual ports and networking (Wi-Fi etc.)
@@ -30,8 +31,6 @@ The problem I faced was, NVidia Quadro 110M has 64 MB onboard memory and it can 
 <a href="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/adept.png"><img class="alignnone" title="Adept" src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/adept.png" alt="" width="800" height="500" /></a>
 
 I was also facing problem in having widescreen display and was forced to use 4:3 display. I tried to google for the problem but no luck there too. I searched for Adept Installer for "nvidia" and I could see two packages in the "System" category.
-
-&nbsp;
 
 I selected the second binary driver (as shown in the image) and applied the changes. Later, I restarted the X-Server by (Ctrl+Alt+Bksp) and I could see the NVidia logo which was sign that the driver is in action. After login, I could go to "System Settings" and in administrator mode, I set my monitor to be "16:9". Then I restarted the X server again. Later I could set the proper resolution to 1440x900 and it needed another restart of X server.
 
