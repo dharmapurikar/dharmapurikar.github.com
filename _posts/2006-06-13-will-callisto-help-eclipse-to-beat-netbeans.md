@@ -21,18 +21,18 @@ Eclipse has hundreds of plugins and each of them has different dependencies. Onc
 Callisto is good effort to address all such problems. Many times, I ask one of my team-member that, "Hey pal, you don't have xml editing feature installed in eclipse? Go get WTP and then it will allow you to edit/format xml in the editor." That guy spends almost half-day to build his workspace environment for editing couple of xml files. :( That’s even worse example of increasing productivity by using tools!
 
 Now Callisto will give me one URL which should broadcast throughout my team and within couple of hours everybody's eclipse workbench will be restored to latest version of top 10 projects from eclipse.org. :) For those who don't know which are those top-10 projects here is the list:
-<ul>
-<li class="MsoNormal"><a href="http://www.eclipse.org/birt/">Business Intelligence and Reporting Tools (BIRT) Project</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/cdt">C/C++ IDE</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/datatools/">Data Tools Platform</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/emf">EMF</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/gef">GEF - Graphical Editor Framework</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/gmf/">Graphical Modeling Framework</a></li>
-<li class="MsoNormal"><a href="http://eclipse.org/eclipse/">Eclipse Project</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/tptp/">Eclipse Test and Performance Tools Platform Project</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/webtools/">Eclipse Web Tools Platform Project</a></li>
-<li class="MsoNormal"><a href="http://www.eclipse.org/vep">VE - Visual Editor</a></li>
-</ul>
+
+* <a href="http://www.eclipse.org/birt/">Business Intelligence and Reporting Tools (BIRT) Project</a>
+* <a href="http://www.eclipse.org/cdt">C/C++ IDE</a>
+* <a href="http://www.eclipse.org/datatools/">Data Tools Platform</a>
+* <a href="http://www.eclipse.org/emf">EMF</a>
+* <a href="http://www.eclipse.org/gef">GEF - Graphical Editor Framework</a>
+* <a href="http://www.eclipse.org/gmf/">Graphical Modeling Framework</a>
+* <a href="http://eclipse.org/eclipse/">Eclipse Project</a>
+* <a href="http://www.eclipse.org/tptp/">Eclipse Test and Performance Tools Platform Project</a>
+* <a href="http://www.eclipse.org/webtools/">Eclipse Web Tools Platform Project</a>
+* <a href="http://www.eclipse.org/vep">VE - Visual Editor</a>
+
 This was needed by eclipse from long time. One URL, one distribution and you are ready to go. Really it should be that simple!
 
 I was wondering will it beat <a href="www.netbeans.org" target="_blank" title="NetBeans home">NetBeans</a>. There are few things which NetBeans is doing good. Good examples would be Enterprise pack and Profiler. These packs integrate very tightly with NetBeans. WTP needs that simplicity. Be it anything, BPEL, Glassfish or your favorite relational database, they just get part of IDE! That’s really a great feature of NetBeans. Visual studio always has such kind of integration with all available tools. NetBeans has exactly delivered same power.

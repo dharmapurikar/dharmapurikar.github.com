@@ -12,7 +12,7 @@ published: true
 meta: 
   dsq_thread_id: "420850946"
 ---
-Hushhh... last week was a real rough! Got some time to breath and felt to write a post. I am currently developing software which has a web-based application component. We tried to ajaxify it to give better user experience. We did it really well. There is lot of buzz going on since last few months around Ajax. Ajax is going to play a vital role in Web 2.0. In this post I would like to shed some light on Ajax only. Before we go too ahead, what we need to think is, are we <strong>really</strong> ready for this?
+Hushhh... last week was a real rough! Got some time to breath and felt to write a post. I am currently developing software which has a web-based application component. We tried to ajaxify it to give better user experience. We did it really well. There is lot of buzz going on since last few months around Ajax. Ajax is going to play a vital role in Web 2.0. In this post I would like to shed some light on Ajax only. Before we go too ahead, what we need to think is, are we **really** ready for this?
 
 Ajax gives a very rich experience to user. Ajax gives richness of web and feel of desktop applications in true sense. While development, I felt that we are not that ready to hit the road. The first and foremost important thing is, the platform which runs the Ajax i.e. browsers are not supporting it natively. If browsers provide a clean abstract level implementation of Ajax then a new developer will not get confused by tons of different frameworks. Instead of number of frameworks, we need native support for Ajax and similar things. That will save lot much efforts of developer and in turn it will allow us to concentrate more on the business logic.
 
@@ -25,4 +25,3 @@ Now I am not interested to start any flame war or address to JavaScript machos w
 To be really ready for Web 2.0 we need Web 2.0 ready web-browsers. Instead of handful of frameworks we need native support from browsers. ECMAScript 4 should be supported by all leading browsers. Most of all, I plea to Microsoft for not making their own standard for browsers. That really creates huge application portability issues. If they really want to create own standard then let it be public so that other people can get benefit out of it!
 
 Peace.
-<p class="MsoNormal">&nbsp;</p>
