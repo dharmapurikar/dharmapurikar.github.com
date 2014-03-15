@@ -17,42 +17,43 @@ I am a newbie to .Net based development. I have been working on a project which 
 Enough with my rant about .Net. Lets come to the point.
 
 Today, I was trying to create virtual directories using Nant in IIS. My environment details are as follows:
-<ul>
-	<li>Windows Vista Business Edition</li>
-	<li>IIS 7 installed with default options.</li>
-</ul>
+
+* Windows Vista Business Edition
+* IIS 7 installed with default options.
+
 Now with above environment, when I fire the command which creates virtual directories. I got following console output:
-<pre>E:\Blah&gt;tools\nant\NAnt.exe -buildfile:Blah.build makeVDir
-NAnt 0.85 (Build 0.85.2344.0; rc4; 02/06/2006)
-Copyright (C) 2001-2006 Gerry Shaw
-http://nant.sourceforge.net
-Buildfile: file:///E:/Blah/Blah.build
-Target framework: Microsoft .NET Framework 2.0
-Target(s) specified: makeVDir
-[loadtasks] Scanning assembly "NAnt.Contrib.Tasks" for extensions.
-[loadtasks] Scanning assembly "DBUpdaterTask" for extensions.
-[script] Scanning assembly "4cliemw_" for extensions.
-makeVDir:
-[deliisdir] Deleting virtual directory 'Blah.WebServices'
-on 'localhost:80' (website: ).
-[deliisdir] The webservice at 'localhost' does not exist
-or is not reachable.
-[deliisdir] Deleting virtual directory 'BlahService' on
-'localhost:80' (website: ).
-[deliisdir] The webservice at 'localhost' does not exist or
-is not reachable.
-[mkiisdir] Creating/modifying virtual directory 'Blah.WebServices'
-on 'localhost:80' (website: ).
-BUILD FAILED - 2 non-fatal error(s), 0 warning(s)
-The webservice at 'localhost' does not exist or is not reachable.
-Total time: 0.8 seconds.</pre>
+	
+	E:\Blah\tools\nant\NAnt.exe -buildfile:Blah.build makeVDir
+	NAnt 0.85 (Build 0.85.2344.0; rc4; 02/06/2006)
+	Copyright (C) 2001-2006 Gerry Shaw
+	http://nant.sourceforge.net
+	Buildfile: file:///E:/Blah/Blah.build
+	Target framework: Microsoft .NET Framework 2.0
+	Target(s) specified: makeVDir
+	[loadtasks] Scanning assembly "NAnt.Contrib.Tasks" for extensions.
+	[loadtasks] Scanning assembly "DBUpdaterTask" for extensions.
+	[script] Scanning assembly "4cliemw_" for extensions.
+	makeVDir:
+	[deliisdir] Deleting virtual directory 'Blah.WebServices'
+	on 'localhost:80' (website: ).
+	[deliisdir] The webservice at 'localhost' does not exist
+	or is not reachable.
+	[deliisdir] Deleting virtual directory 'BlahService' on
+	'localhost:80' (website: ).
+	[deliisdir] The webservice at 'localhost' does not exist or
+	is not reachable.
+	[mkiisdir] Creating/modifying virtual directory 'Blah.WebServices'
+	on 'localhost:80' (website: ).
+	BUILD FAILED - 2 non-fatal error(s), 0 warning(s)
+	The webservice at 'localhost' does not exist or is not reachable.
+	Total time: 0.8 seconds.
+
 I googled for it and didn't found anything useful. I saw posts <a href="http://tinyurl.com/36636r">here</a> and <a href="http://tinyurl.com/2jfohm">here</a> with no information or solutions. Fortunately, I got this working and thought to make a post about it.I tried following things and I am listing them all.
-<ul>
-	<li>My machine was referring to localhost as "::1" which is a IPv6 address. I went ahead and commented that in %windows%\system32\drivers\etc\hosts and kept localhost pointing to "127.0.0.1".</li>
-	<li>I also forcefully edited the "Default" website binding in IIS Manager to 127.0.0.1 which was previously to "All Unassigned".</li>
-	<li>Last thing I tried was (and this made my installation really work) was installing additional IIS Features. By default IIS in windows vista installs features which doesn't allow Nant to register webservices or create virtual directories. So I went ahead and installed all the features under IIS installation in windows vista. The screenshot is attached below.</li>
-</ul>
-&nbsp;
+
+
+* My machine was referring to localhost as "::1" which is a IPv6 address. I went ahead and commented that in %windows%\system32\drivers\etc\hosts and kept localhost pointing to "127.0.0.1".
+* I also forcefully edited the "Default" website binding in IIS Manager to 127.0.0.1 which was previously to "All Unassigned".
+* Last thing I tried was (and this made my installation really work) was installing additional IIS Features. By default IIS in windows vista installs features which doesn't allow Nant to register webservices or create virtual directories. So I went ahead and installed all the features under IIS installation in windows vista. The screenshot is attached below.
 
 <img class="alignnone" title="IIS Install" src="http://i71.photobucket.com/albums/i157/dharmapurikar/ThoughtWorker/iis_install.png" alt="" width="560" height="431" />
 
