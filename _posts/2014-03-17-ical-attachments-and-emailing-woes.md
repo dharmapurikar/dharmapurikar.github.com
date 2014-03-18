@@ -11,6 +11,8 @@ tags:
 - symfony
 - iCalcreator
 - iCal
+- calendar
+- attachment
 ---
 
 Calendar notifications are becoming more common in collaborative applications. Scheduling systems are easy to build but difficult to integrate as there are large number of clients and service providers. Our product went through a painful time regarding integrating with various email clients and online services regarding iCalendar integration.
