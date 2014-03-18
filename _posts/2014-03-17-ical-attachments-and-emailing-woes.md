@@ -17,7 +17,7 @@ tags:
 
 Calendar notifications are becoming more common in collaborative applications. Scheduling systems are easy to build but difficult to integrate as there are large number of clients and service providers. Our product went through a painful time regarding integrating with various email clients and online services regarding iCalendar integration.
 
-This series of posts is going to make sure, I document them for anybody who is facing similar problems. If you have any questions regarding specifics, I will be happy to respond on a stackoverflow question or comment below.
+This post is going to make sure, I document them for anybody who is facing similar problems. If you have any questions regarding specifics, I will be happy to respond on a stackoverflow question or comment below.
 
 I am not going to create a HOW-TO list of articles here - but document things I bumped against. So if you're looking for a detailed tutorial, you'll need to research on your own.
 
