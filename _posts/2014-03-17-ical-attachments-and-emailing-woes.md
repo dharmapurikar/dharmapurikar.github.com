@@ -135,8 +135,8 @@ If you look at the source of email generated with above type of code -
 	ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
 	 TRUE;CN=Jane Smith:MAILTO:janesmith@example.com
 	DESCRIPTION:
-	DTSTART:20140316T103000
-	DTEND:20140316T110000
+	DTSTART:20140316T103000Z
+	DTEND:20140316T110000Z
 	LOCATION:Meeting venue
 	ORGANIZER:MAILTO:johnsmith@example.com
 	SEQUENCE:0
@@ -169,5 +169,9 @@ Later I figured out that due to a bug in our code, we were occasionly sending 0 
 ### Issue 4 - Outlook used to show 3-4 hour differences in meeting timings
 
 This one was the most weird issue I faced. Google, iCal on mac or Yahoo used to show correct meeting timings but Outlook used to show timings with 3-4 hour time difference. This one was a huge problem. 
+
+The reason for this problem lies in formatting the <code>dtstart</code> and <code>dtend</code> attributes of <code>vevent</code>. 
+
+There is a good example [here](http://kigkonsult.se/iCalcreator/docs/using.html#transformDateTime). You'll need to format time in the appropriate timezone. You'll also need to specify X-WR-TIMEZONE property in the <code>vcalendar</code> section of the file. 
 
 {% include JB/setup %}
